@@ -1,3 +1,4 @@
+from typing import List
 
 import numpy as np
 from diag_generator import diag_generator
@@ -10,7 +11,7 @@ class Node:
         self.pred: Node
         self.longest_path =0
 
-def findLongestPath(weights:np.ndarray) -> list[list[Node]]:
+def findLongestPath(weights:np.ndarray) -> List[List[Node]]:
     # init 
     n = weights.shape[0]
     nodes = [[None for _ in range(n)] for _ in range(n)]
