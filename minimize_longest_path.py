@@ -42,12 +42,13 @@ def sortByWeightAndLogNumOfPaths(weights)->List[NodePriority]:
     queue.sort(key=lambda x : x.priority,reverse=True)
     return queue
 
+# sort only by position except nodes that their wight is zero
 def sortByPositionOnly(weights)->List[NodePriority]:
     n = weights.shape[0]
     queue = []
     for i in range(n):
         for j in range(n):
-            weight = 1.0
+            weight = 1 if (weights[i,j]>0) else 0
             divider = (i+j+1) if (i+j<n) else (2*(n-1) -i -j+1 )
             priority = weight / divider
             queue.append( NodePriority(i,j,priority))

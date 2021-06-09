@@ -13,11 +13,11 @@ kinds = ['Exponential', 'Geometric', 'Bernoulli', 'Bounded Pareto']
 # kinds = ['Exponential', 'Geometric', 'Bernoulli']
 # Ns = [10, 100, 1000, 1000]
 # kinds = ['Exponential']
-Ns = [100]
+Ns = [10]
 Ms = [0.1, 0.2, 0.5,0.8 ,0.9]
 minimizers_names = ['no minimize','basicMinimise', 'priorityMinimise','priorityLogMinimise' ,'positionOnly']
 minimizers = [lambda x,y:x ,basicMinimise, priorityMinimise,priorityLogMinimise ,positionOnly]
-iters = 1000
+iters = 100
 samplers = []
 dfs = {x: pd.DataFrame() for x in kinds}
 with open("config.json", "r") as f:
