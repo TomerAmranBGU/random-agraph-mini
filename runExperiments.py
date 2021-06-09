@@ -9,8 +9,8 @@ from histogram import plotHistogram
 from longest_path import findLongestPath
 from samplers.SamplerFactory import get_sampler
 from minimize_longest_path import basicMinimise, priorityMinimise,priorityLogMinimise ,positionOnly
-# kinds = ['Exponential', 'Geometric', 'Bernoulli', 'Bounded Pareto']
-kinds = ['Exponential', 'Geometric', 'Bernoulli']
+kinds = ['Exponential', 'Geometric', 'Bernoulli', 'Bounded Pareto']
+# kinds = ['Exponential', 'Geometric', 'Bernoulli']
 # Ns = [10, 100, 1000, 1000]
 # kinds = ['Exponential']
 Ns = [100]
