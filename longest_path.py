@@ -20,23 +20,24 @@ def findLongestPath(weights:np.ndarray) -> List[List[Node]]:
             nodes[i][j] = Node(i,j,weights[i,j]) 
 
     # algorithem
-    for i,j in diag_generator(n):
-        curr = nodes[i][j]
-        pred = None
-        if (i == 0 and j>0):
-            pred = nodes[i][j-1]
-
-        if (i>0 and j==0):
-            pred = nodes[i-1][j]
-
-        if (i >0 and j>0):
-            if(nodes[i-1][j].longest_path > nodes[i][j-1].longest_path):
-                pred = nodes[i-1][j]
-            else:
+    for i in range(n):
+        for j in range(n):
+            curr = nodes[i][j]
+            pred = None
+            if (i == 0 and j>0):
                 pred = nodes[i][j-1]
 
-        curr.longest_path = curr.weight + (pred.longest_path if pred else 0)
-        curr.pred = pred
+            elif (i>0 and j==0):
+                pred = nodes[i-1][j]
+
+            elif (i >0 and j>0):
+                if(nodes[i-1][j].longest_path > nodes[i][j-1].longest_path):
+                    pred = nodes[i-1][j]
+                else:
+                    pred = nodes[i][j-1]
+
+            curr.longest_path = curr.weight + (pred.longest_path if pred else 0)
+            curr.pred = pred
     return nodes
 
 

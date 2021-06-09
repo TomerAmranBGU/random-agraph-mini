@@ -9,6 +9,7 @@ from histogram import plotHistogram
 from longest_path import findLongestPath
 from samplers.SamplerFactory import get_sampler
 
+repets_by_N = {'10': 10000, '100': 5000, '1000': 2500, '10000': 1250}
 kinds = ['Exponential', 'Geometric', 'Bernoulli', 'Bounded Pareto']
 Ns = [10, 100, 1000, 1000]
 samplers = []
@@ -19,8 +20,9 @@ for dist in dists:
     samplers.append(get_sampler(dist["kind"], dist["specific_params"]))
 for n in Ns:
     for sampler in samplers:
-        longest_paths = np.zeros(10000)
-        for i in range(10000):
+        repeats = repets_by_N[str(n)]
+        longest_paths = np.zeros(repeats)
+        for i in range(repeats):
             weights = sampler.sample(n)
             nodes = findLongestPath(weights)
             longest_paths[i] = nodes[n - 1][n - 1].longest_path
@@ -33,7 +35,7 @@ for n in Ns:
         sampler_dict['mean'] = mean
         sampler_dict['variance'] = var
         dfs[kind] = dfs[kind].append(sampler_dict, ignore_index=True)
-        print(kind+" "+"mean: "+str(mean)+",var: "+str(var))
+        print(kind + " " + "mean: " + str(mean) + ",var: " + str(var))
 
 for kind in kinds:
-    dfs[kind].to_csv("./" + kind + ".csv")
+    dfs[kind].to_csv("./csvs/" + kind + ".csv")
