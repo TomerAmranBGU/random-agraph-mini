@@ -8,17 +8,16 @@ import numpy as np
 from histogram import plotHistogram
 from longest_path import findLongestPath
 from samplers.SamplerFactory import get_sampler
-from minimize_longest_path import basicMinimise,priorityLogMinimise, priorityMinimise
+from minimize_longest_path import basicMinimise, priorityMinimise,priorityLogMinimise ,positionOnly
 # kinds = ['Exponential', 'Geometric', 'Bernoulli', 'Bounded Pareto']
 kinds = ['Exponential', 'Geometric', 'Bernoulli']
 # Ns = [10, 100, 1000, 1000]
 # kinds = ['Exponential']
 Ns = [100]
 Ms = [0.1, 0.2, 0.5,0.8 ,0.9]
-minimizers_names = ['no minimize', 'basic minimize', 'priority', 'log priority']
-minimizers = [lambda x,y:x, basicMinimise, priorityMinimise, priorityLogMinimise]
+minimizers_names = ['no minimize','basicMinimise', 'priorityMinimise','priorityLogMinimise' ,'positionOnly']
+minimizers = [lambda x,y:x ,basicMinimise, priorityMinimise,priorityLogMinimise ,positionOnly]
 iters = 1000
-alpha = 0.5
 samplers = []
 dfs = {x: pd.DataFrame() for x in kinds}
 with open("config.json", "r") as f:
