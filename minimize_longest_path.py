@@ -52,8 +52,10 @@ def minimize(weights, alpha, sorter,put_flag=False):
     queue = sorter(weights)
     for i in range(n_resources):
         node = queue[i]
-        weights[node.i][node.j] = weights[node.i][node.j] / 2 if not put_flag else flag
-        weights[node.i][node.j] = 0
+        weight =  weights[node.i][node.j] / 2 
+        if put_flag:
+            weight = flag
+        weights[node.i][node.j] = weight
     return weights
 
 

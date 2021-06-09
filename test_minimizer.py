@@ -6,6 +6,6 @@ alpha = 0.5
 weights = np.array([ i + 0.0 for i in range(n*n)]).reshape(n,n)
 print(weights)
 
-print(basicMinimise(weights, alpha,True))
-print(priorityMinimise(weights, alpha,True))
-print(priorityLogMinimise(weights, alpha,True))
+print(basicMinimise(weights, alpha))
+print(priorityMinimise(weights, alpha))
+print(priorityLogMinimise(weights, alpha))
