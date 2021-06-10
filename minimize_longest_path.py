@@ -42,6 +42,7 @@ def sortByWeightAndLogNumOfPaths(weights)->List[NodePriority]:
     queue.sort(key=lambda x : x.priority,reverse=True)
     return queue
 
+
 # sort only by position except nodes that their wight is zero
 def sortByPositionOnly(weights)->List[NodePriority]:
     n = weights.shape[0]
@@ -54,6 +55,7 @@ def sortByPositionOnly(weights)->List[NodePriority]:
             queue.append( NodePriority(i,j,priority))
     queue.sort(key=lambda x : x.priority,reverse=True)
     return queue
+
 flag = 0
 def minimize(weights, alpha, sorter,put_flag=False):
     weights = np.ndarray.copy(weights)
@@ -69,6 +71,9 @@ def minimize(weights, alpha, sorter,put_flag=False):
     return weights
 
 
+
+
+
 def basicMinimise(weights, alpha, put_flag=False):
     return minimize(weights, alpha, sortByWeight,put_flag=put_flag)
 
@@ -79,4 +84,7 @@ def priorityLogMinimise(weights, alpha,put_flag=False):
     return minimize(weights, alpha, sortByWeightAndLogNumOfPaths,put_flag=put_flag)
 
 def positionOnly(weights, alpha,put_flag=False):
+    return minimize(weights, alpha, sortByPositionOnly,put_flag=put_flag)
+
+def priorityImproved(weights, alpha,put_flag=False):
     return minimize(weights, alpha, sortByPositionOnly,put_flag=put_flag)
