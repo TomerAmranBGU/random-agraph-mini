@@ -1,0 +1,115 @@
+[
+  {
+    "kind": "Bounded Pareto",
+    "specific_params": {
+      "h": 100,
+      "alpha": 0.5
+    }
+  },
+  {
+    "kind": "Bounded Pareto",
+    "specific_params": {
+      "h": 100,
+      "alpha": 1
+    }
+  },
+  {
+    "kind": "Bounded Pareto",
+    "specific_params": {
+      "h": 100,
+      "alpha": 1.5
+    }
+  },
+  {
+    "kind": "Bounded Pareto",
+    "specific_params": {
+      "h": 100,
+      "alpha": 2
+    }
+  },
+  {
+    "kind": "Bounded Pareto",
+    "specific_params": {
+      "h": 1000,
+      "alpha": 0.5
+    }
+  },
+  {
+    "kind": "Bounded Pareto",
+    "specific_params": {
+      "h": 1000,
+      "alpha": 1
+    }
+  },
+  {
+    "kind": "Bounded Pareto",
+    "specific_params": {
+      "h": 1000,
+      "alpha": 1.5
+    }
+  },
+  {
+    "kind": "Bounded Pareto",
+    "specific_params": {
+      "h": 1000,
+      "alpha": 2
+    }
+  },
+  {
+    "kind": "Bounded Pareto",
+    "specific_params": {
+      "h": 10000,
+      "alpha": 0.5
+    }
+  },
+  {
+    "kind": "Bounded Pareto",
+    "specific_params": {
+      "h": 10000,
+      "alpha": 1
+    }
+  },
+  {
+    "kind": "Bounded Pareto",
+    "specific_params": {
+      "h": 10000,
+      "alpha": 1.5
+    }
+  },
+  {
+    "kind": "Bounded Pareto",
+    "specific_params": {
+      "h": 10000,
+      "alpha": 2
+    }
+  },
+  {
+    "kind": "Bounded Pareto",
+    "specific_params": {
+      "h": 100000,
+      "alpha": 0.5
+    }
+  },
+  {
+    "kind": "Bounded Pareto",
+    "specific_params": {
+      "h": 100000,
+      "alpha": 1
+    }
+  },
+  {
+    "kind": "Bounded Pareto",
+    "specific_params": {
+      "h": 100000,
+      "alpha": 1.5
+    }
+  },
+  {
+    "kind": "Bounded Pareto",
+    "specific_params": {
+      "h": 100000,
+      "alpha": 2
+    }
+  }
+
+]
