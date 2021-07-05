@@ -12,7 +12,7 @@ class Expon(Sampler):
         self.alpha = 1
 
     def sample(self, size: int) -> np.ndarray:
-        return scipy.stats.expon.rvs(self.alpha, size=[size, size])
+        return scipy.stats.expon.rvs(self.alpha, size=[size, size]).astype(np.double)
 
     def kind_n_dict(self) -> [string, Dict]:
         return "Exponential", {"alpha": 1}

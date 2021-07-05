@@ -27,7 +27,7 @@ class Boundedpareto(Sampler):
 
     def sample(self, size: int) -> np.ndarray:
         X = scipy.stats.uniform.rvs(size=[size, size])
-        return self.inverse_dist(X)
+        return self.inverse_dist(X).astype(np.double)
 
     def kind_n_dict(self) -> [string, Dict]:
         return "Bounded Pareto", {"alpha": self.alpha, "l": self.l, "h": self.h}
