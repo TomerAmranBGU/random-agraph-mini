@@ -37,14 +37,51 @@ cpdef percentage_of_paths(int n):
     return denominators
 
 
-cpdef iterate(int n_resources,double [:,:] weights,probs, indexes,int non_zeros,n):
+cpdef iterate_probalistic(int n_resources,double [:,:] weights,probs, indexes,int non_zeros,n):
     cdef int k,i,j,l
     cdef int n2=n*n
     rng = numpy.random.default_rng()
     for l in range(n_resources) :
-        n_resources-=non_zeros
         indexes = rng.choice(n2, p=softmax(probs))
         i=indexes/n
         j=indexes % n
         weights[i, j] /= 2
         probs[n*i + j] /= 2
+
+cpdef iterate_deteministic(int n_resources,double [:,:] weights,probs, indexes,int non_zeros,n):
+    cdef int k, i, j, l
+    cdef int n2 = n * n
+    for l in range(n_resources):
+        indexes = numpy.argmax(probs)
+        i = indexes / n
+        j = indexes % n
+        weights[i, j] /= 2
+        probs[n * i + j] /= 2
+
+cpdef iterate_deteministic_batch(int n_resources,double [:,:] weights,probs, indexes,int non_zeros,n):
+    cdef int k, i, j, l
+    cdef int n2 = n * n
+    while n_resources > 0:
+        ind = numpy.argsort(probs)
+        k = min(non_zeros, n_resources)
+        n_resources -= non_zeros
+        for m in range(k):
+            l=ind[n2-m-1]
+            i = l/n
+            j = l%n
+            weights[i, j] /= 2
+            probs[n * i + j] /= 2
+
+cpdef iterate_probalistic_batch(int n_resources,double [:,:] weights,probs, indexes,int non_zeros,n):
+    cdef int k, i, j, l, m
+    cdef int n2 = n * n
+    rng = numpy.random.default_rng()
+    while n_resources > 0:
+        k = min(non_zeros, n_resources)
+        n_resources -= non_zeros
+        tuples = choices(indexes,weights=probs,k=k)
+        for m in range(k):
+            i = tuples[m][0]
+            j = tuples[m][1]
+            weights[i, j] /= 2
+            probs[n * i + j] /= 2
