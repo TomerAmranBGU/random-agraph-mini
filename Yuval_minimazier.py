@@ -11,8 +11,7 @@ priority_type_map = {
 
 
 class YMinimizer:
-    def __init__(self, priority_type, n: int):
-        self.priority_type = priority_type
+    def __init__(self, n: int):
         self.denominators = double_diag_log_c(n)
         self.n = n
 

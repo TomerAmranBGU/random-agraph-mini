@@ -2499,11 +2499,11 @@ static void __pyx_f_14longest_path_c_findLongestPath(__Pyx_memviewslice __pyx_v_
   int __pyx_v_j;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
-  int __pyx_t_2;
+  Py_ssize_t __pyx_t_2;
   Py_ssize_t __pyx_t_3;
   Py_ssize_t __pyx_t_4;
   Py_ssize_t __pyx_t_5;
-  Py_ssize_t __pyx_t_6;
+  int __pyx_t_6;
   int __pyx_t_7;
   int __pyx_t_8;
   int __pyx_t_9;
@@ -2526,102 +2526,116 @@ static void __pyx_f_14longest_path_c_findLongestPath(__Pyx_memviewslice __pyx_v_
   /* "longest_path_c.pyx":11
  *     # init
  *     cdef int i,j
- *     if not diamond:             # <<<<<<<<<<<<<<
- *         nodes[0,0]=weights[0,0]
- * 
+ *     if  diamond:             # <<<<<<<<<<<<<<
+ *         nodes[0,0]=0
+ *     else:
  */
   __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_diamond); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 11, __pyx_L1_error)
-  __pyx_t_2 = ((!__pyx_t_1) != 0);
-  if (__pyx_t_2) {
+  if (__pyx_t_1) {
 
     /* "longest_path_c.pyx":12
  *     cdef int i,j
- *     if not diamond:
- *         nodes[0,0]=weights[0,0]             # <<<<<<<<<<<<<<
- * 
- *     # algorithem
+ *     if  diamond:
+ *         nodes[0,0]=0             # <<<<<<<<<<<<<<
+ *     else:
+ *         nodes[0,0]=weights[0,0]
  */
+    __pyx_t_2 = 0;
     __pyx_t_3 = 0;
-    __pyx_t_4 = 0;
-    __pyx_t_5 = 0;
-    __pyx_t_6 = 0;
-    *((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_5 * __pyx_v_nodes.strides[0]) )) + __pyx_t_6)) )) = (*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_weights.data + __pyx_t_3 * __pyx_v_weights.strides[0]) )) + __pyx_t_4)) )));
+    *((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_2 * __pyx_v_nodes.strides[0]) )) + __pyx_t_3)) )) = 0.0;
 
     /* "longest_path_c.pyx":11
  *     # init
  *     cdef int i,j
- *     if not diamond:             # <<<<<<<<<<<<<<
- *         nodes[0,0]=weights[0,0]
- * 
+ *     if  diamond:             # <<<<<<<<<<<<<<
+ *         nodes[0,0]=0
+ *     else:
  */
+    goto __pyx_L3;
   }
 
-  /* "longest_path_c.pyx":15
+  /* "longest_path_c.pyx":14
+ *         nodes[0,0]=0
+ *     else:
+ *         nodes[0,0]=weights[0,0]             # <<<<<<<<<<<<<<
+ * 
+ *     # algorithem
+ */
+  /*else*/ {
+    __pyx_t_3 = 0;
+    __pyx_t_2 = 0;
+    __pyx_t_4 = 0;
+    __pyx_t_5 = 0;
+    *((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_4 * __pyx_v_nodes.strides[0]) )) + __pyx_t_5)) )) = (*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_weights.data + __pyx_t_3 * __pyx_v_weights.strides[0]) )) + __pyx_t_2)) )));
+  }
+  __pyx_L3:;
+
+  /* "longest_path_c.pyx":17
  * 
  *     # algorithem
  *     for i in range(n):             # <<<<<<<<<<<<<<
  *         for j in range(n):
  *             if diamond:
  */
-  __pyx_t_7 = __pyx_v_n;
-  __pyx_t_8 = __pyx_t_7;
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_i = __pyx_t_9;
+  __pyx_t_6 = __pyx_v_n;
+  __pyx_t_7 = __pyx_t_6;
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_i = __pyx_t_8;
 
-    /* "longest_path_c.pyx":16
+    /* "longest_path_c.pyx":18
  *     # algorithem
  *     for i in range(n):
  *         for j in range(n):             # <<<<<<<<<<<<<<
  *             if diamond:
  *                 if abs(i - j) > n / 2 or abs(i + j - n) > n / 2:
  */
-    __pyx_t_10 = __pyx_v_n;
-    __pyx_t_11 = __pyx_t_10;
-    for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
-      __pyx_v_j = __pyx_t_12;
+    __pyx_t_9 = __pyx_v_n;
+    __pyx_t_10 = __pyx_t_9;
+    for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
+      __pyx_v_j = __pyx_t_11;
 
-      /* "longest_path_c.pyx":17
+      /* "longest_path_c.pyx":19
  *     for i in range(n):
  *         for j in range(n):
  *             if diamond:             # <<<<<<<<<<<<<<
  *                 if abs(i - j) > n / 2 or abs(i + j - n) > n / 2:
  *                     weights[i][j] = 0
  */
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_diamond); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 17, __pyx_L1_error)
-      if (__pyx_t_2) {
+      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_diamond); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 19, __pyx_L1_error)
+      if (__pyx_t_1) {
 
-        /* "longest_path_c.pyx":18
+        /* "longest_path_c.pyx":20
  *         for j in range(n):
  *             if diamond:
  *                 if abs(i - j) > n / 2 or abs(i + j - n) > n / 2:             # <<<<<<<<<<<<<<
  *                     weights[i][j] = 0
  *             if i == 0 and j > 0:
  */
-        __pyx_t_13 = abs((__pyx_v_i - __pyx_v_j)); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 18, __pyx_L1_error)
-        __pyx_t_1 = ((__pyx_t_13 > __Pyx_div_long(__pyx_v_n, 2)) != 0);
-        if (!__pyx_t_1) {
+        __pyx_t_12 = abs((__pyx_v_i - __pyx_v_j)); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 20, __pyx_L1_error)
+        __pyx_t_13 = ((__pyx_t_12 > __Pyx_div_long(__pyx_v_n, 2)) != 0);
+        if (!__pyx_t_13) {
         } else {
-          __pyx_t_2 = __pyx_t_1;
+          __pyx_t_1 = __pyx_t_13;
           goto __pyx_L10_bool_binop_done;
         }
-        __pyx_t_13 = abs(((__pyx_v_i + __pyx_v_j) - __pyx_v_n)); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 18, __pyx_L1_error)
-        __pyx_t_1 = ((__pyx_t_13 > __Pyx_div_long(__pyx_v_n, 2)) != 0);
-        __pyx_t_2 = __pyx_t_1;
+        __pyx_t_12 = abs(((__pyx_v_i + __pyx_v_j) - __pyx_v_n)); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 20, __pyx_L1_error)
+        __pyx_t_13 = ((__pyx_t_12 > __Pyx_div_long(__pyx_v_n, 2)) != 0);
+        __pyx_t_1 = __pyx_t_13;
         __pyx_L10_bool_binop_done:;
-        if (__pyx_t_2) {
+        if (__pyx_t_1) {
 
-          /* "longest_path_c.pyx":19
+          /* "longest_path_c.pyx":21
  *             if diamond:
  *                 if abs(i - j) > n / 2 or abs(i + j - n) > n / 2:
  *                     weights[i][j] = 0             # <<<<<<<<<<<<<<
  *             if i == 0 and j > 0:
  *                 nodes[i,j]= weights[i,j]+nodes[i,j-1]
  */
-          __pyx_t_4 = __pyx_v_i;
+          __pyx_t_2 = __pyx_v_i;
           __pyx_t_3 = __pyx_v_j;
-          *((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_weights.data + __pyx_t_4 * __pyx_v_weights.strides[0]) )) + __pyx_t_3)) )) = 0.0;
+          *((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_weights.data + __pyx_t_2 * __pyx_v_weights.strides[0]) )) + __pyx_t_3)) )) = 0.0;
 
-          /* "longest_path_c.pyx":18
+          /* "longest_path_c.pyx":20
  *         for j in range(n):
  *             if diamond:
  *                 if abs(i - j) > n / 2 or abs(i + j - n) > n / 2:             # <<<<<<<<<<<<<<
@@ -2630,7 +2644,7 @@ static void __pyx_f_14longest_path_c_findLongestPath(__Pyx_memviewslice __pyx_v_
  */
         }
 
-        /* "longest_path_c.pyx":17
+        /* "longest_path_c.pyx":19
  *     for i in range(n):
  *         for j in range(n):
  *             if diamond:             # <<<<<<<<<<<<<<
@@ -2639,25 +2653,25 @@ static void __pyx_f_14longest_path_c_findLongestPath(__Pyx_memviewslice __pyx_v_
  */
       }
 
-      /* "longest_path_c.pyx":20
+      /* "longest_path_c.pyx":22
  *                 if abs(i - j) > n / 2 or abs(i + j - n) > n / 2:
  *                     weights[i][j] = 0
  *             if i == 0 and j > 0:             # <<<<<<<<<<<<<<
  *                 nodes[i,j]= weights[i,j]+nodes[i,j-1]
  * 
  */
-      __pyx_t_1 = ((__pyx_v_i == 0) != 0);
-      if (__pyx_t_1) {
+      __pyx_t_13 = ((__pyx_v_i == 0) != 0);
+      if (__pyx_t_13) {
       } else {
-        __pyx_t_2 = __pyx_t_1;
+        __pyx_t_1 = __pyx_t_13;
         goto __pyx_L13_bool_binop_done;
       }
-      __pyx_t_1 = ((__pyx_v_j > 0) != 0);
-      __pyx_t_2 = __pyx_t_1;
+      __pyx_t_13 = ((__pyx_v_j > 0) != 0);
+      __pyx_t_1 = __pyx_t_13;
       __pyx_L13_bool_binop_done:;
-      if (__pyx_t_2) {
+      if (__pyx_t_1) {
 
-        /* "longest_path_c.pyx":21
+        /* "longest_path_c.pyx":23
  *                     weights[i][j] = 0
  *             if i == 0 and j > 0:
  *                 nodes[i,j]= weights[i,j]+nodes[i,j-1]             # <<<<<<<<<<<<<<
@@ -2665,14 +2679,14 @@ static void __pyx_f_14longest_path_c_findLongestPath(__Pyx_memviewslice __pyx_v_
  *             elif i > 0 and j == 0:
  */
         __pyx_t_3 = __pyx_v_i;
-        __pyx_t_4 = __pyx_v_j;
-        __pyx_t_6 = __pyx_v_i;
-        __pyx_t_5 = (__pyx_v_j - 1);
+        __pyx_t_2 = __pyx_v_j;
+        __pyx_t_5 = __pyx_v_i;
+        __pyx_t_4 = (__pyx_v_j - 1);
         __pyx_t_14 = __pyx_v_i;
         __pyx_t_15 = __pyx_v_j;
-        *((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_14 * __pyx_v_nodes.strides[0]) )) + __pyx_t_15)) )) = ((*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_weights.data + __pyx_t_3 * __pyx_v_weights.strides[0]) )) + __pyx_t_4)) ))) + (*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_6 * __pyx_v_nodes.strides[0]) )) + __pyx_t_5)) ))));
+        *((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_14 * __pyx_v_nodes.strides[0]) )) + __pyx_t_15)) )) = ((*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_weights.data + __pyx_t_3 * __pyx_v_weights.strides[0]) )) + __pyx_t_2)) ))) + (*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_5 * __pyx_v_nodes.strides[0]) )) + __pyx_t_4)) ))));
 
-        /* "longest_path_c.pyx":20
+        /* "longest_path_c.pyx":22
  *                 if abs(i - j) > n / 2 or abs(i + j - n) > n / 2:
  *                     weights[i][j] = 0
  *             if i == 0 and j > 0:             # <<<<<<<<<<<<<<
@@ -2682,40 +2696,40 @@ static void __pyx_f_14longest_path_c_findLongestPath(__Pyx_memviewslice __pyx_v_
         goto __pyx_L12;
       }
 
-      /* "longest_path_c.pyx":23
+      /* "longest_path_c.pyx":25
  *                 nodes[i,j]= weights[i,j]+nodes[i,j-1]
  * 
  *             elif i > 0 and j == 0:             # <<<<<<<<<<<<<<
  *                 nodes[i,j]= weights[i,j]+nodes[i - 1,j]
  * 
  */
-      __pyx_t_1 = ((__pyx_v_i > 0) != 0);
-      if (__pyx_t_1) {
+      __pyx_t_13 = ((__pyx_v_i > 0) != 0);
+      if (__pyx_t_13) {
       } else {
-        __pyx_t_2 = __pyx_t_1;
+        __pyx_t_1 = __pyx_t_13;
         goto __pyx_L15_bool_binop_done;
       }
-      __pyx_t_1 = ((__pyx_v_j == 0) != 0);
-      __pyx_t_2 = __pyx_t_1;
+      __pyx_t_13 = ((__pyx_v_j == 0) != 0);
+      __pyx_t_1 = __pyx_t_13;
       __pyx_L15_bool_binop_done:;
-      if (__pyx_t_2) {
+      if (__pyx_t_1) {
 
-        /* "longest_path_c.pyx":24
+        /* "longest_path_c.pyx":26
  * 
  *             elif i > 0 and j == 0:
  *                 nodes[i,j]= weights[i,j]+nodes[i - 1,j]             # <<<<<<<<<<<<<<
  * 
  *             elif i > 0 and j > 0:
  */
-        __pyx_t_5 = __pyx_v_i;
-        __pyx_t_6 = __pyx_v_j;
-        __pyx_t_4 = (__pyx_v_i - 1);
+        __pyx_t_4 = __pyx_v_i;
+        __pyx_t_5 = __pyx_v_j;
+        __pyx_t_2 = (__pyx_v_i - 1);
         __pyx_t_3 = __pyx_v_j;
         __pyx_t_15 = __pyx_v_i;
         __pyx_t_14 = __pyx_v_j;
-        *((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_15 * __pyx_v_nodes.strides[0]) )) + __pyx_t_14)) )) = ((*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_weights.data + __pyx_t_5 * __pyx_v_weights.strides[0]) )) + __pyx_t_6)) ))) + (*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_4 * __pyx_v_nodes.strides[0]) )) + __pyx_t_3)) ))));
+        *((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_15 * __pyx_v_nodes.strides[0]) )) + __pyx_t_14)) )) = ((*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_weights.data + __pyx_t_4 * __pyx_v_weights.strides[0]) )) + __pyx_t_5)) ))) + (*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_2 * __pyx_v_nodes.strides[0]) )) + __pyx_t_3)) ))));
 
-        /* "longest_path_c.pyx":23
+        /* "longest_path_c.pyx":25
  *                 nodes[i,j]= weights[i,j]+nodes[i,j-1]
  * 
  *             elif i > 0 and j == 0:             # <<<<<<<<<<<<<<
@@ -2725,25 +2739,25 @@ static void __pyx_f_14longest_path_c_findLongestPath(__Pyx_memviewslice __pyx_v_
         goto __pyx_L12;
       }
 
-      /* "longest_path_c.pyx":26
+      /* "longest_path_c.pyx":28
  *                 nodes[i,j]= weights[i,j]+nodes[i - 1,j]
  * 
  *             elif i > 0 and j > 0:             # <<<<<<<<<<<<<<
  *                 if nodes[i - 1][j] > nodes[i, j - 1]:
  *                     nodes[i,j]= weights[i,j]+nodes[i - 1,j]
  */
-      __pyx_t_1 = ((__pyx_v_i > 0) != 0);
-      if (__pyx_t_1) {
+      __pyx_t_13 = ((__pyx_v_i > 0) != 0);
+      if (__pyx_t_13) {
       } else {
-        __pyx_t_2 = __pyx_t_1;
+        __pyx_t_1 = __pyx_t_13;
         goto __pyx_L17_bool_binop_done;
       }
-      __pyx_t_1 = ((__pyx_v_j > 0) != 0);
-      __pyx_t_2 = __pyx_t_1;
+      __pyx_t_13 = ((__pyx_v_j > 0) != 0);
+      __pyx_t_1 = __pyx_t_13;
       __pyx_L17_bool_binop_done:;
-      if (__pyx_t_2) {
+      if (__pyx_t_1) {
 
-        /* "longest_path_c.pyx":27
+        /* "longest_path_c.pyx":29
  * 
  *             elif i > 0 and j > 0:
  *                 if nodes[i - 1][j] > nodes[i, j - 1]:             # <<<<<<<<<<<<<<
@@ -2751,28 +2765,28 @@ static void __pyx_f_14longest_path_c_findLongestPath(__Pyx_memviewslice __pyx_v_
  *                 else:
  */
         __pyx_t_3 = (__pyx_v_i - 1);
-        __pyx_t_4 = __pyx_v_j;
-        __pyx_t_6 = __pyx_v_i;
-        __pyx_t_5 = (__pyx_v_j - 1);
-        __pyx_t_2 = (((*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_3 * __pyx_v_nodes.strides[0]) )) + __pyx_t_4)) ))) > (*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_6 * __pyx_v_nodes.strides[0]) )) + __pyx_t_5)) )))) != 0);
-        if (__pyx_t_2) {
+        __pyx_t_2 = __pyx_v_j;
+        __pyx_t_5 = __pyx_v_i;
+        __pyx_t_4 = (__pyx_v_j - 1);
+        __pyx_t_1 = (((*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_3 * __pyx_v_nodes.strides[0]) )) + __pyx_t_2)) ))) > (*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_5 * __pyx_v_nodes.strides[0]) )) + __pyx_t_4)) )))) != 0);
+        if (__pyx_t_1) {
 
-          /* "longest_path_c.pyx":28
+          /* "longest_path_c.pyx":30
  *             elif i > 0 and j > 0:
  *                 if nodes[i - 1][j] > nodes[i, j - 1]:
  *                     nodes[i,j]= weights[i,j]+nodes[i - 1,j]             # <<<<<<<<<<<<<<
  *                 else:
  *                     nodes[i,j]= weights[i,j]+nodes[i,j-1]
  */
-          __pyx_t_5 = __pyx_v_i;
-          __pyx_t_6 = __pyx_v_j;
-          __pyx_t_4 = (__pyx_v_i - 1);
+          __pyx_t_4 = __pyx_v_i;
+          __pyx_t_5 = __pyx_v_j;
+          __pyx_t_2 = (__pyx_v_i - 1);
           __pyx_t_3 = __pyx_v_j;
           __pyx_t_14 = __pyx_v_i;
           __pyx_t_15 = __pyx_v_j;
-          *((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_14 * __pyx_v_nodes.strides[0]) )) + __pyx_t_15)) )) = ((*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_weights.data + __pyx_t_5 * __pyx_v_weights.strides[0]) )) + __pyx_t_6)) ))) + (*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_4 * __pyx_v_nodes.strides[0]) )) + __pyx_t_3)) ))));
+          *((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_14 * __pyx_v_nodes.strides[0]) )) + __pyx_t_15)) )) = ((*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_weights.data + __pyx_t_4 * __pyx_v_weights.strides[0]) )) + __pyx_t_5)) ))) + (*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_2 * __pyx_v_nodes.strides[0]) )) + __pyx_t_3)) ))));
 
-          /* "longest_path_c.pyx":27
+          /* "longest_path_c.pyx":29
  * 
  *             elif i > 0 and j > 0:
  *                 if nodes[i - 1][j] > nodes[i, j - 1]:             # <<<<<<<<<<<<<<
@@ -2782,23 +2796,23 @@ static void __pyx_f_14longest_path_c_findLongestPath(__Pyx_memviewslice __pyx_v_
           goto __pyx_L19;
         }
 
-        /* "longest_path_c.pyx":30
+        /* "longest_path_c.pyx":32
  *                     nodes[i,j]= weights[i,j]+nodes[i - 1,j]
  *                 else:
  *                     nodes[i,j]= weights[i,j]+nodes[i,j-1]             # <<<<<<<<<<<<<<
  */
         /*else*/ {
           __pyx_t_3 = __pyx_v_i;
-          __pyx_t_4 = __pyx_v_j;
-          __pyx_t_6 = __pyx_v_i;
-          __pyx_t_5 = (__pyx_v_j - 1);
+          __pyx_t_2 = __pyx_v_j;
+          __pyx_t_5 = __pyx_v_i;
+          __pyx_t_4 = (__pyx_v_j - 1);
           __pyx_t_15 = __pyx_v_i;
           __pyx_t_14 = __pyx_v_j;
-          *((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_15 * __pyx_v_nodes.strides[0]) )) + __pyx_t_14)) )) = ((*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_weights.data + __pyx_t_3 * __pyx_v_weights.strides[0]) )) + __pyx_t_4)) ))) + (*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_6 * __pyx_v_nodes.strides[0]) )) + __pyx_t_5)) ))));
+          *((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_15 * __pyx_v_nodes.strides[0]) )) + __pyx_t_14)) )) = ((*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_weights.data + __pyx_t_3 * __pyx_v_weights.strides[0]) )) + __pyx_t_2)) ))) + (*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_nodes.data + __pyx_t_5 * __pyx_v_nodes.strides[0]) )) + __pyx_t_4)) ))));
         }
         __pyx_L19:;
 
-        /* "longest_path_c.pyx":26
+        /* "longest_path_c.pyx":28
  *                 nodes[i,j]= weights[i,j]+nodes[i - 1,j]
  * 
  *             elif i > 0 and j > 0:             # <<<<<<<<<<<<<<
@@ -17845,7 +17859,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 17, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 945, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(2, 133, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(2, 148, __pyx_L1_error)

@@ -28,27 +28,6 @@ cpdef cnp.ndarray[cnp.float32_t, ndim=2] double_diag_log_c(int n):
 
 
 
-cpdef iterate_probalistic(int n_resources,float [:,::1] weights,probs, indexes,int non_zeros,n):
-    cdef int k,i,j,l
-    cdef int n2=n*n
-    rng = np.random.default_rng()
-    for l in range(n_resources) :
-        indexes = rng.choice(n2, p=softmax(probs))
-        i=indexes/n
-        j=indexes % n
-        weights[i, j] /= 2
-        probs[n*i + j] /= 2
-
-cpdef iterate_deteministic(int n_resources,float [:,:] weights,probs, indexes,int non_zeros,n):
-    cdef int k, i, j, l
-    cdef int n2 = n * n
-    for l in range(n_resources):
-        indexes = np.argmax(probs)
-        i = indexes / n
-        j = indexes % n
-        weights[i, j] /= 2
-        probs[n * i + j] /= 2
-
 cpdef void iterate_deteministic_batch(int n_resources,float [:,::1]  weights,float [::1]  probs, int non_zeros,int n):
     cdef int k, i, j, l
     cdef int n2 = n * n
@@ -64,16 +43,4 @@ cpdef void iterate_deteministic_batch(int n_resources,float [:,::1]  weights,flo
             if n_resources > 0:
                 probs[n * i + j] /= 2
 
-cpdef iterate_probalistic_batch(int n_resources,float [:,:] weights,probs, indexes,int non_zeros,n):
-    cdef int k, i, j, l, m
-    cdef int n2 = n * n
-    rng = np.random.default_rng()
-    while n_resources > 0:
-        k = min(non_zeros, n_resources)
-        n_resources -= non_zeros
-        tuples = choices(indexes,weights=probs,k=k)
-        for m in range(k):
-            i = tuples[m][0]
-            j = tuples[m][1]
-            weights[i, j] /= 2
-            probs[n * i + j] /= 2
+
