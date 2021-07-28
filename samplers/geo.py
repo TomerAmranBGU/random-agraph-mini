@@ -12,7 +12,7 @@ class Geo(Sampler):
         self.p = 1 - np.exp(-1)
 
     def sample(self, size: int) -> np.ndarray:
-        return scipy.stats.geom.rvs(self.p, size=[size, size]).astype(np.double)
+        return np.ascontiguousarray(scipy.stats.geom.rvs(self.p, size=[size, size]),dtype=np.float32)
 
     def kind_n_dict(self) -> [string,Dict]:
         return  "Geometric", {"p": self.p}

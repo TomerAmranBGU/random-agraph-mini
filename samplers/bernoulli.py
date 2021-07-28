@@ -12,7 +12,7 @@ class Bernoulli(Sampler):
         self.p = p
 
     def sample(self, size: int) -> np.ndarray:
-        return scipy.stats.bernoulli.rvs(self.p, size=[size, size]).astype(np.double)
+        return np.ascontiguousarray(scipy.stats.bernoulli.rvs(self.p, size=[size, size]),dtype=np.float32)
 
     def kind_n_dict(self) -> [string,Dict]:
         return  "Bernoulli", {"p": self.p}

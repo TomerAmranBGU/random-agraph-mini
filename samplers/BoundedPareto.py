@@ -4,7 +4,6 @@ from typing import Dict
 from samplers.Sampler import Sampler
 import numpy as np
 import scipy.stats
-from sympy.stats import BoundedPareto, sample, sample_iter
 import scipy.stats
 
 
@@ -21,13 +20,9 @@ class Boundedpareto(Sampler):
         return np.power(-(x * self.h_pow_alpha - x - self.h_pow_alpha) / (
                self.h_pow_alpha), -1 / self.alpha)
 
-    def sample1(self, size: int) -> np.ndarray:
-        X = BoundedPareto('X', self.alpha, self.l, self.h)
-        return next(sample(X, size=(size, size), numsamples=size ** 2))
-
     def sample(self, size: int) -> np.ndarray:
         X = scipy.stats.uniform.rvs(size=[size, size])
-        return self.inverse_dist(X).astype(np.double)
+        return np.ascontiguousarray(self.inverse_dist(X),dtype=np.float32)
 
     def kind_n_dict(self) -> [string, Dict]:
         return "Bounded Pareto", {"alpha": self.alpha, "l": self.l, "h": self.h}

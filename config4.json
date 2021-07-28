@@ -1,29 +1,29 @@
 [
-{
+  {
     "kind": "Bounded Pareto",
     "specific_params": {
-      "h": 100,
+      "h": 1000000000,
       "alpha": 0.5
     }
   },
   {
     "kind": "Bounded Pareto",
     "specific_params": {
-      "h": 100,
+      "h": 1000000000,
       "alpha": 1
     }
   },
   {
     "kind": "Bounded Pareto",
     "specific_params": {
-      "h": 100,
+      "h": 1000000000,
       "alpha": 1.5
     }
   },
   {
     "kind": "Bounded Pareto",
     "specific_params": {
-      "h": 100,
+      "h": 1000000000,
       "alpha": 2
     }
   }

@@ -1,0 +1,23 @@
+[
+  {
+    "kind": "Exponential",
+    "specific_params": {}
+  },
+  {
+    "kind": "Geometric",
+    "specific_params": {}
+  },
+  {
+    "kind": "Bernoulli",
+    "specific_params": {
+      "p": 0.25
+    }
+  },
+  {
+    "kind": "Bernoulli",
+    "specific_params": {
+      "p": 0.50
+    }
+  }
+
+]
