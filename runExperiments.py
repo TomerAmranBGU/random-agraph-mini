@@ -10,28 +10,26 @@ import time
 from histogram import plotHistogram
 from longest_path_c import findLongestPath
 from samplers.SamplerFactory import get_sampler
-from minimize_longest_path import basicMinimise, priorityMinimise, priorityLogMinimise, positionOnly
-from minimizer import Minimizer
 from Yuval_minimazier import YMinimizer
 
 mean_str = 'mean: m='
 var_str = 'variance: m='
-kinds = ['Bounded Pareto', ]  # 'Exponential','Geometric', 'Bernoulli']  # , 'Bounded Pareto']
-Ns = [10000]
+kinds = ['Bounded Pareto']
+Ns = [10, 100, 1000, 10000]
 diffs = [0, 0.1, 0.1, 0.3, 0.3, 0.1]
 Ms = ['0', '0.1', '0.2', '0.5', '0.8', '0.9']
 
-iterations = [100]
+iterations = [10000, 2500, 500, 100]
 samplers = []
 dfs = {x: pd.DataFrame() for x in kinds}
 
-with open("config3.json", "r") as f:
+with open("config4.json", "r") as f:
     dists = json.load(f)
 for dist in dists:
     samplers.append(get_sampler(dist["kind"], dist["specific_params"]))
 try:
     for n, iters in zip(Ns, iterations):
-        minimizer = YMinimizer("double_diag_log", n)
+        minimizer = YMinimizer(n)
         nodes = np.zeros((n, n), dtype=np.float32)
         t = time.localtime()
         current_time = time.strftime("%H:%M:%S", t)
@@ -47,7 +45,7 @@ try:
                 weights = sampler.sample(n)
                 for diff, m in zip(diffs, Ms):
                     minimizer.minimize(weights, diff)
-                    findLongestPath(weights, nodes, n)
+                    findLongestPath(weights, nodes, n, diamond=True)
                     longest_paths[m][i] = nodes[n - 1][n - 1]
             for m in Ms:
                 plotHistogram(longest_paths[m], kind, params, n, m)

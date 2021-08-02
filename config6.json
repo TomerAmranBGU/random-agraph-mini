@@ -1,0 +1,14 @@
+[
+  {
+    "kind": "Bernoulli",
+    "specific_params": {
+      "p": 0.25
+    }
+  },
+  {
+    "kind": "Bernoulli",
+    "specific_params": {
+      "p": 0.5
+    }
+  }
+]
